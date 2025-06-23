@@ -1,0 +1,206 @@
+/* Container for the chat bubbles */
+#chat-box,
+.chat-bubble-container {
+    height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    background: #f9f9f9;
+    margin-bottom: 12px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    scroll-behavior: smooth;
+}
+
+/* WhatsApp-style chat bubbles */
+.chat-bubble {
+    max-width: 70%;
+    padding: 10px 16px;
+    border-radius: 18px;
+    word-break: break-word;
+    font-size: 1.06em;
+    box-shadow: 0 1px 2px rgba(120,120,120,0.06);
+    margin-bottom: 2px;
+    position: relative;
+}
+
+.chat-user {
+    align-self: flex-end;
+    background: #dcf8c6;
+    color: #222;
+    border-bottom-right-radius: 6px;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 16px;
+}
+
+.chat-ai {
+    align-self: flex-start;
+    background: #f1f0f0;
+    color: #333;
+    border-bottom-left-radius: 6px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 16px;
+}
+
+/* Add a small "tail" like WhatsApp */
+.chat-user::after {
+    content: "";
+    position: absolute;
+    right: -10px;
+    bottom: 0;
+    width: 0; height: 0;
+    border-top: 10px solid #dcf8c6;
+    border-left: 12px solid transparent;
+}
+.chat-ai::after {
+    content: "";
+    position: absolute;
+    left: -10px;
+    bottom: 0;
+    width: 0; height: 0;
+    border-top: 10px solid #f1f0f0;
+    border-right: 12px solid transparent;
+}
+
+/* Translator container for fullscreen */
+.translator-box {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background: #fff;
+    padding: 16px;
+    position: relative;
+    transition: box-shadow 0.2s, width 0.2s, height 0.2s;
+    min-height: 400px;
+    max-width: 600px;
+    margin: auto;
+}
+.translator-box.fullscreen {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    background: #f9f9f9;
+    padding: 24px;
+    max-width: none;
+    border-radius: 0;
+    overflow-y: auto;
+    box-shadow: 0 0 30px #aaa;
+}
+
+/* Controls shown below voice select, always visible in fullscreen as well */
+.fullscreen-controls {
+    margin-bottom: 16px;
+    margin-top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+}
+.translator-box.fullscreen .fullscreen-controls {
+    position: static;
+    margin-bottom: 16px;
+    margin-top: 0;
+    z-index: 10001;
+}
+
+/* Top controls (legacy - for reference, not used if you use .fullscreen-controls below voice select) */
+.top-controls {
+    position: sticky;
+    top: 0;
+    background: #f9f9f9;
+    z-index: 10000;
+    padding-top: 8px;
+}
+.translator-box.fullscreen .top-controls {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    padding: 16px;
+    background: #f9f9f9;
+    z-index: 10001;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+/* Smart button hover effect */
+.smart-btn {
+    transition: background 0.19s, color 0.19s, box-shadow 0.19s;
+    border-radius: 8px;
+    box-shadow: 0 1px 5px rgba(50,50,70,0.07);
+}
+.smart-btn:hover, .smart-btn:focus {
+    background: linear-gradient(90deg, #5ee7df 0%, #b490ca 100%);
+    color: #fff !important;
+    box-shadow: 0 2px 15px rgba(90,90,120,0.16);
+    border: none;
+    outline: none;
+}
+
+/* TTS controls styling */
+#audio-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Rating box styling */
+.rating-box {
+    background: #faf8ff;
+    border: 1px solid #deddee;
+    border-radius: 8px;
+    padding: 8px 10px;
+    margin-top: 4px;
+    box-shadow: 0 1px 4px rgba(120,120,160,0.05);
+}
+
+/* Responsive Favorites & History Section */
+#favorite-list, #history-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-left: 0;
+}
+#favorite-list .list-group-item, #history-list .list-group-item {
+    flex: 1 1 320px;
+    min-width: 240px;
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #f1f1f1;
+    border-radius: 6px;
+    background: #fff;
+}
+@media (max-width: 900px) {
+    #favorite-list .list-group-item, #history-list .list-group-item {
+        flex: 1 1 100%;
+        min-width: 0;
+    }
+}
+
+/* Responsive for small screens */
+@media (max-width: 700px) {
+    .translator-box {
+        max-width: 98vw;
+        padding: 5vw 1vw;
+    }
+    #chat-box, .chat-bubble-container {
+        height: 33vh;
+        padding: 2vw 1vw;
+    }
+    .chat-bubble {
+        font-size: 1em;
+        max-width: 90vw;
+    }
+    .fullscreen-controls {
+        gap: 6px;
+    }
+    #favorite-list .list-group-item, #history-list .list-group-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+}

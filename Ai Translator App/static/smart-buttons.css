@@ -1,0 +1,12 @@
+.smart-btn {
+    transition: background 0.22s, color 0.22s, box-shadow 0.22s;
+    border-radius: 8px;
+    box-shadow: 0 1px 5px rgba(50,50,70,0.07);
+}
+.smart-btn:hover, .smart-btn:focus {
+    background: linear-gradient(90deg, #5ee7df 0%, #b490ca 100%);
+    color: #fff !important;
+    box-shadow: 0 2px 15px rgba(90,90,120,0.16);
+    border: none;
+    outline: none;
+}
