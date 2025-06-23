@@ -1,0 +1,6 @@
+{
+  "name": "AI Grammar Corrector",
+  "description": "A web application that uses the LanguageTool API to correct grammar in user-provided text. Features a modern UI with a gradient background, typing animation for results, and toast notifications.",
+  "requestFramePermissions": [],
+  "prompt": ""
+}
