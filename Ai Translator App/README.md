@@ -53,6 +53,17 @@
 - **OCR:** Tesseract OCR (via Pillow & pytesseract)
 - **TTS:** Google Text-to-Speech (gTTS)
 
+
+## 🗂 Languages Used
+
+- **HTML** – Templates and page structure (`.html`)
+- **JavaScript** – Client-side logic, event handling, TTS/recording (`.js`)
+- **Python** – Backend logic, routing, OCR, TTS, database (`.py`)
+- **CSS** – Styling and chat UI (`.css`)
+- **Dockerfile** – App containerization
+- **YAML** – Docker Compose configuration (`docker-compose.yml`)
+- **Bash / Shell** – Setup and command-line usage
+
 ---
 
 ## 🖥️ Screenshots
@@ -74,8 +85,8 @@
 #### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/ai-translator-chatbot.git
-cd ai-translator-chatbot
++ git clone https://github.com/yourusername/PINNACLE.git
++ cd "PINNACLE/Ai Translator Web App/Ai Translator App"
 ```
 
 #### 2. Set up Python environment
@@ -111,7 +122,7 @@ flask run
 python app.py
 ```
 
-- Open [http://localhost:5000](http://localhost:5000) in your browser.
++ Open the app in your browser at [http://localhost:5000](http://localhost:5000).
 - Register a new user and start translating!
 
 ---
@@ -120,14 +131,16 @@ python app.py
 
 > **⚠️ WARNING:**  
 > Use this Docker method **only if you cannot or do not wish to run LibreTranslate separately as an API**.  
++ > **⚠️ Note:**  
++ > Use this Docker method only if you don't run LibreTranslate separately as an API.
 > Docker will run both the Flask app and a LibreTranslate container.  
 > **If you are using the public LibreTranslate API or a self-hosted API, you do NOT need Docker for this app.**
 
 #### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/ai-translator-chatbot.git
-cd ai-translator-chatbot
++ git clone https://github.com/yourusername/PINNACLE.git
++ cd "PINNACLE/Ai Translator Web App/Ai Translator App"
 ```
 
 #### 2. Build and Run with Docker Compose
@@ -190,18 +203,6 @@ COPY requirements.txt .
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-
-docker conatiner local setup
-docker runner code
-PS C:\Internship\Pinnacle\github\PINNACLE-main\Ai Translator App> 
-docker run -it --rm -p 5000:5000 -v libretranslate-data:/home/libretranslate/.local/share/argos-translate --user root libretranslate/libretranslate --debug --host 0.0.0.0
-
-
-The --rm flag means the container will be removed automatically once it stops. To keep the container, run:
-docker run -it --name libretranslate -p 5000:5000 -v libretranslate-data:/home/libretranslate/.local/share/argos-translate --user root libretranslate/libretranslate --debug --host 0.0.0.0
-
-docker start -ai libretranslate
-
 COPY . .
 
 EXPOSE 5000
@@ -210,6 +211,33 @@ CMD ["python", "app.py"]
 ```
 
 ---
+**Main thing, if you use locally do docker container local setup docker runner code (fully ignore method 2 and do this carefully)**
+
+
+`PS C:\Internship\Pinnacle\github\PINNACLE-main\Ai Translator App> [your own directory] `
+..
+```
+docker run -it --rm -p 5000:5000 -v libretranslate-data:/home/libretranslate/.local/share/argos-translate --user root libretranslate/libretranslate --debug --host 0.0.0.0
+```
+
+**The --rm flag means the container will be removed automatically once it stops. To keep the container, run:**
+
+**
+```
+docker run -it --name libretranslate -p 5000:5000 -v libretranslate-data:/home/libretranslate/.local/share/argos-translate --user root libretranslate/libretranslate --debug --host 0.0.0.0
+```
+
+**after completing downloaded all models play the docker container / docker start -ai libretranslate
+after this run only**
+
+```
+python app.py
+```
+**done **
+
+
+CMD ["python", "app.py"]
+
 
 ## 📄 Usage Tips
 
@@ -286,7 +314,7 @@ ai-translator-chatbot/
 
 ## 📧 Contact
 
-For support or questions, open an issue or contact [archisman04](mailto:your@email.com).
+For support, suggestions, or questions, open an issue or contact [archisman04](mailto:your@email.com).
 
 ---
 
